@@ -926,8 +926,10 @@ class bcn_breadcrumb_trail
 			//Trim titles, if needed
 			if($this->opt['blimit_title'] && $this->opt['amax_title_length'] > 0)
 			{
-				//Trim the breadcrumb's title
-				$breadcrumb->title_trim($this->opt['amax_title_length']);
+				//Trim the breadcrumb's title (except current title)
+				if($key > 0) {
+					$breadcrumb->title_trim($this->opt['amax_title_length']);
+				}
 			}
 			//Place in the breadcrumb's assembled elements
 			$trail_str .= $breadcrumb->assemble($linked);
